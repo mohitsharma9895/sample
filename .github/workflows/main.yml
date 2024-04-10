@@ -12,6 +12,6 @@ jobs:
       - name: Check out repo's default branch
         uses: actions/checkout@v4
         with:
-           branch: main
+           ref: dev
         
       
