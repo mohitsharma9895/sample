@@ -1,0 +1,23 @@
+name: Environment example
+on:
+  push: 
+      branches: 
+          - main
+  workflow_dispatch:
+env:
+  continent: Asia
+jobs:
+  Environment-Test:
+    env: 
+      country: India
+    runs-on: ubuntu-latest
+    steps:
+      - name: specific to step
+        env: 
+          city: Delhi 
+        run : echo "Hello Im from ${{env.city}}, which is in the $country that inside $continent"
+      
+      - name: specific to step
+        env: 
+          city: Delhi 
+        run : echo "Hello Im from $city, which is in the $country"
