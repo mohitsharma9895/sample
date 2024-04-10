@@ -4,20 +4,14 @@ on:
       branches: 
           - main
   workflow_dispatch:
-env:
-  continent: Asia
+
 jobs:
-  Environment-Test:
-    env: 
-      country: India
-    runs-on: ubuntu-latest
+  Job-1:
+    runs-on: ubuntu-20.04
     steps:
-      - name: specific to step
-        env: 
-          city: Delhi 
-        run : echo "Hello Im from ${{env.city}}, which is in the $country that inside $continent"
+      - name: Check out repo's default branch
+        uses: actions/checkout@v4
+        with:
+           branch: main
+        
       
-      - name: specific to step
-        env: 
-          city: Delhi 
-        run : echo "Hello Im from $city, which is in the $country"
