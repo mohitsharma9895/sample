@@ -1,7 +1,15 @@
 name: Conditional Steps based on Runner
 
-on: workflow_dispatch
-
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+       description: 'Operating system for the runner (ubuntu, macOS, windows)'
+       required: true
+       default: 'ubuntu-latest'
+       validation:
+        pattern: '^(ubuntu|macOS|windows)$'
+        message: 'Invalid operating system. Must be one of: ubuntu, macOS, windows'
 jobs:
   build:
     runs-on: ${{ github.event.inputs.os }}
