@@ -16,7 +16,7 @@ jobs:
         env: 
           city: Delhi 
         run : 
-            echo "${{env.city}} is a city located in the northern part of ${{env.country}}, which is situated on the ${{env.continent}} continent
+            echo "${{env.city}} is a city located in the northern part of ${{env.country}}, which is situated on the ${{env.continent}} continent"
             
       - name: specific to step
         run : echo "Hello Im from $city, which is part of $country"
