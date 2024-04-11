@@ -1,21 +1,25 @@
-name: Conditional Workflow-2
-
+name: Environment example
 on:
-  push:
-    branches:
-      - main
-
+  # push: 
+  #     branches: 
+  #         - main
+  workflow_dispatch:
+env:
+  continent: ${{vars.CONTINENT}}
 jobs:
-  job_a:
+  Environment-Test:
+    env: 
+      country: India
     runs-on: ubuntu-latest
     steps:
-      - name: Step A
-        run: echo "Step A executed successfully"
-
-  job_b:
-    runs-on: ubuntu-latest
-    needs: job_a
-    if: ${{ needs.job_a.outcome == 'success' }}
-    steps:
-      - name: Step B
-        run: echo "Step B executed because Step A succeeded"
+      - name: specific to step
+        env: 
+          city: Delhi 
+        run : 
+            echo "${{env.city}} is a city located in the northern part of ${{env.country}}, which is situated on the ${{env.continent}} continent
+            
+      - name: specific to step
+        run : echo "Hello Im from $city, which is part of $country"
+      
+      - name: Defaults
+        run : echo "Hello My run Id is ${{github.run_id}} which inside Reep ${{github.repository}}"
