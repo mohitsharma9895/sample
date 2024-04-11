@@ -7,9 +7,7 @@ on:
        description: 'Operating system for the runner (ubuntu, macOS, windows)'
        required: true
        default: 'ubuntu-latest'
-       validation:
-         pattern: '^(ubuntu|macOS|windows)$'
-         message: 'Invalid operating system. Must be one of: ubuntu, macOS, windows'
+       
 jobs:
   build:
     runs-on: ${{ github.event.inputs.os }}
@@ -24,4 +22,4 @@ jobs:
         if: runner.os != 'Linux'  
         run: echo "This step runs only on macOS runners"
       - name: Defaults
-        run : echo "Hello My run Id is ${{github.run_id}} which inside Repo ${{GITHUB_REPOSITORY}}
+        run : echo "Hello My run Id is ${{github.run_id}} which inside Repo 
