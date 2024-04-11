@@ -6,14 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      # Step 1 for Ubuntu runners
+     
       - name: Run Ubuntu-specific task (replace with your command)
         if: runner == 'ubuntu-latest'  
         run: echo "This step runs only on Ubuntu runners"
 
-      # Step 2 for self-hosted runners
+      
       - name: Run self-hosted specific task (replace with your command)
         if: runner == 'self-hosted'  
         run: echo "This step runs only on self-hosted runners"
