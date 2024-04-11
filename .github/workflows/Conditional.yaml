@@ -17,5 +17,5 @@ jobs:
 
       
       - name: Run self-hosted specific task (replace with your command)
-        if: runner == 'self-hosted'  
+        if: runner != 'ubuntu-latest' 
         run: echo "This step runs only on self-hosted runners"
