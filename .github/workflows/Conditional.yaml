@@ -1,10 +1,14 @@
 name: Conditional Steps based on Runner
 
-on: push
+on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runner: [ubuntu-latest, self-hosted]  # Define runner options
+    runs-on: ${{ matrix.runner }}  
+    
     steps:
      
       - name: Run Ubuntu-specific task (replace with your command)
