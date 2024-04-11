@@ -4,18 +4,17 @@ on: workflow_dispatch
 
 jobs:
   build:
-    strategy:
-      matrix:
-        runner: [ubuntu-latest, self-hosted]  # Define runner options
-    runs-on: ${{ matrix.runner }}  
-    
+    runs-on: ubuntu-latest
     steps:
-     
+      - uses: actions/checkout@v3
+
+      # Step 1 for Ubuntu runners
       - name: Run Ubuntu-specific task (replace with your command)
-        if: runner == 'ubuntu-latest'  
+        if: runner.os == 'Linux'  
         run: echo "This step runs only on Ubuntu runners"
 
-      
+      # Step 2 for self-hosted runners
       - name: Run self-hosted specific task (replace with your command)
-        if: runner != 'ubuntu-latest' 
+        if: runner.os != 'Linux'  
         run: echo "This step runs only on self-hosted runners"
+
